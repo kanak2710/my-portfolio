@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kanak Sharma — Computer Science Engineering student, aspiring AI/ML engineer, and developer based in Indore, India.">
+  <meta name="theme-color" content="#28382b">
+  <title>Kanak Sharma — Portfolio</title>
+  <style>
+    :root {
+      --forest: #28382b;
+      --forest-deep: #1e2b21;
+      --olive: #69764e;
+      --olive-light: #a3a982;
+      --cream: #f3efe3;
+      --paper: #fbf9f2;
+      --sand: #e7e0cf;
+      --line: #dcd5c4;
+      --ink: #252a22;
+      --muted: #707467;
+      --white: #fffdf7;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(40, 56, 43, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { color: var(--white); background: var(--olive); }
+
+    .skip-link {
+      position: absolute; left: 14px; top: -60px; z-index: 100;
+      padding: 10px 14px; background: var(--white); color: var(--forest);
+      border-radius: 8px;
+    }
+    .skip-link:focus { top: 12px; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(243, 239, 227, .92);
+      border-bottom: 1px solid rgba(40, 56, 43, .10);
+      backdrop-filter: blur(16px);
+    }
+    .nav-wrap {
+      width: min(1160px, calc(100% - 48px));
+      min-height: 76px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 28px;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--forest); font-size: 19px; font-weight: 800; letter-spacing: -.8px;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid; place-items: center; width: 34px; height: 34px;
+      border-radius: 50%; background: var(--forest); color: var(--cream);
+      font-family: var(--serif); font-size: 17px; font-weight: 400;
+    }
+    .brand span:last-child { color: var(--olive); }
+    .nav-links { display: flex; align-items: center; gap: 7px; }
+    .nav-links a {
+      padding: 9px 13px; border-radius: 999px;
+      color: #5d6255; font-size: 13px; font-weight: 650;
+      transition: color .2s ease, background .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--forest); background: #e5e3d3;
+    }
+    .nav-links .nav-contact {
+      margin-left: 8px; padding: 10px 17px;
+      color: var(--cream); background: var(--forest);
+    }
+    .nav-links .nav-contact:hover { color: var(--white); background: var(--olive); }
+
+    .hero {
+      position: relative; overflow: hidden;
+      color: var(--cream); background: var(--forest);
+      isolation: isolate;
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; z-index: -1; pointer-events: none;
+      border: 1px solid rgba(243, 239, 227, .12); border-radius: 50%;
+    }
+    .hero::before { width: 620px; height: 620px; right: -240px; top: -330px; }
+    .hero::after { width: 430px; height: 430px; right: -145px; top: -235px; }
+    .hero-inner {
+      width: min(1160px, calc(100% - 48px)); min-height: 610px;
+      margin: auto; padding: 90px 0 64px;
+      display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 70px;
+    }
+    .eyebrow, .section-kicker {
+      margin: 0 0 17px; color: var(--olive-light);
+      font-size: 11px; font-weight: 800; letter-spacing: 2.1px; text-transform: uppercase;
+    }
+    .hero h1 {
+      max-width: 720px; margin: 0;
+      font-family: var(--serif); font-size: clamp(58px, 7.4vw, 96px);
+      font-weight: 400; letter-spacing: -4.5px; line-height: .98;
+    }
+    .hero h1 em { color: var(--olive-light); font-weight: 400; }
+    .hero-role {
+      margin: 25px 0 13px; color: #d5d8c7;
+      font-size: 15px; font-weight: 650; letter-spacing: .2px;
+    }
+    .hero-intro {
+      max-width: 570px; margin: 0; color: #c4cbb9;
+      font-size: 15px; line-height: 1.9;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 0 20px; border: 1px solid transparent; border-radius: 999px;
+      font-size: 13px; font-weight: 750; transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: var(--forest); background: var(--cream); }
+    .button-primary:hover { background: var(--white); }
+    .button-outline { color: var(--cream); border-color: rgba(243, 239, 227, .35); }
+    .button-outline:hover { border-color: var(--olive-light); background: rgba(255,255,255,.05); }
+    .arrow { font-size: 17px; line-height: 1; }
+
+    .hero-art {
+      position: relative; width: min(100%, 430px); aspect-ratio: 1 / 1;
+      justify-self: end; display: grid; place-items: center;
+    }
+    .art-ring {
+      position: absolute; width: 88%; height: 88%; border: 1px solid rgba(243,239,227,.2);
+      border-radius: 50%; transform: rotate(-24deg);
+    }
+    .art-ring::before {
+      content: ""; position: absolute; width: 13px; height: 13px; top: 12%; left: 13%;
+      border-radius: 50%; background: var(--olive-light); box-shadow: 0 0 0 8px rgba(163,169,130,.12);
+    }
+    .art-ring-two {
+      width: 69%; height: 69%; border-color: rgba(243,239,227,.13); transform: rotate(38deg);
+    }
+    .art-disc {
+      width: 63%; height: 63%; display: grid; place-items: center;
+      border-radius: 50%; color: var(--forest); background: var(--cream);
+      box-shadow: 0 25px 70px rgba(0,0,0,.18);
+      font-family: var(--serif); font-size: clamp(76px, 10vw, 118px);
+      letter-spacing: -8px; padding-right: 8px;
+    }
+    .art-caption {
+      position: absolute; right: 0; bottom: 10%; padding: 12px 16px;
+      color: var(--cream); background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15); border-radius: 12px;
+      backdrop-filter: blur(10px); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .hero-bottom {
+      width: min(1160px, calc(100% - 48px)); margin: auto; padding: 20px 0 25px;
+      display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      border-top: 1px solid rgba(243,239,227,.17);
+      color: #c4cbb9; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .hero-bottom span { display: inline-flex; align-items: center; gap: 9px; }
+    .hero-bottom i { width: 6px; height: 6px; border-radius: 50%; background: var(--olive-light); }
+
+    .section { padding: 105px 0; }
+    .container { width: min(1060px, calc(100% - 48px)); margin: auto; }
+    .section-heading {
+      display: flex; justify-content: space-between; align-items: end; gap: 30px;
+      margin-bottom: 42px;
+    }
+    .section-kicker { margin-bottom: 10px; color: var(--olive); }
+    .section-title {
+      margin: 0; color: var(--forest); font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 58px); font-weight: 400; letter-spacing: -1.8px; line-height: 1.08;
+    }
+    .section-note { max-width: 330px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+    .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 90px; align-items: start; }
+    .about-copy { max-width: 600px; color: #62675b; font-size: 15px; line-height: 2; }
+    .about-copy p { margin: 0 0 17px; }
+    .about-highlight {
+      margin-top: 28px; padding: 20px 22px;
+      border-left: 3px solid var(--olive); background: #eae7d9;
+      color: var(--forest); font-family: var(--serif); font-size: 20px; line-height: 1.55;
+    }
+    .education-card {
+      padding: 27px; background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .card-label { color: var(--olive); font-size: 10px; font-weight: 850; letter-spacing: 1.8px; text-transform: uppercase; }
+    .education-card h3 {
+      margin: 15px 0 7px; color: var(--forest);
+      font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.25;
+    }
+    .education-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .education-meta {
+      display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+      margin-top: 24px; padding-top: 17px; border-top: 1px solid var(--line);
+      color: #777b6e; font-size: 11px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+    }
+
+    .skills-section { background: #e9e6d8; }
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .skill-card {
+      min-height: 190px; padding: 23px 21px;
+      background: rgba(251,249,242,.78); border: 1px solid #d9d5c5; border-radius: 17px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .skill-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .skill-number { color: #a0a48a; font-family: var(--serif); font-size: 26px; }
+    .skill-card h3 { margin: 13px 0 13px; color: var(--forest); font-size: 14px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-tags span {
+      padding: 6px 9px; border-radius: 999px; color: #5b6349;
+      background: #e8e8d9; font-size: 11px; font-weight: 650;
+    }
+
+    .project-card {
+      position: relative; overflow: hidden; padding: 38px;
+      display: grid; grid-template-columns: 110px 1fr; gap: 30px;
+      background: var(--forest); border-radius: 25px; color: var(--cream);
+      box-shadow: 0 25px 60px rgba(40,56,43,.14);
+    }
+    .project-index { color: var(--olive-light); font-family: var(--serif); font-size: 48px; line-height: 1; }
+    .project-content { max-width: 710px; }
+    .project-type { color: var(--olive-light); font-size: 10px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; }
+    .project-card h3 {
+      margin: 12px 0 13px; font-family: var(--serif); font-size: clamp(29px, 4vw, 42px);
+      font-weight: 400; letter-spacing: -.8px;
+    }
+    .project-card p { max-width: 690px; margin: 0; color: #c7cdbd; font-size: 14px; line-height: 1.9; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 23px; }
+    .project-tags span {
+      padding: 7px 11px; border: 1px solid rgba(243,239,227,.22);
+      border-radius: 999px; color: #e0e2d5; font-size: 10px; font-weight: 700; letter-spacing: .5px;
+    }
+    .project-foot { margin-top: 25px; padding-top: 17px; border-top: 1px solid rgba(243,239,227,.16); color: #aeb8a4; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; }
+
+    .contact-section { padding: 95px 0 80px; background: #e7e3d4; }
+    .contact-panel {
+      padding: clamp(28px, 5vw, 55px); border-radius: 25px;
+      background: var(--paper); border: 1px solid var(--line);
+      display: grid; grid-template-columns: 1fr .9fr; gap: 50px; align-items: center;
+    }
+    .contact-panel h2 {
+      max-width: 520px; margin: 0; color: var(--forest);
+      font-family: var(--serif); font-size: clamp(39px, 5vw, 57px);
+      font-weight: 400; line-height: 1.08; letter-spacing: -1.7px;
+    }
+    .contact-panel .contact-copy { max-width: 430px; margin: 17px 0 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .contact-links { display: grid; gap: 10px; }
+    .contact-link {
+      display: flex; align-items: center; justify-content: space-between; gap: 15px;
+      padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px;
+      background: #f7f5ed; transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .contact-link:hover { transform: translateX(3px); border-color: #b5b99d; background: #eeeddf; }
+    .contact-link small { display: block; color: var(--olive); font-size: 9px; font-weight: 850; letter-spacing: 1.4px; text-transform: uppercase; }
+    .contact-link strong { display: block; margin-top: 3px; color: var(--forest); font-size: 12px; font-weight: 700; overflow-wrap: anywhere; }
+    .contact-arrow { color: var(--olive); font-size: 19px; }
+
+    footer {
+      padding: 24px; color: #c7cdbd; background: var(--forest-deep);
+      display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;
+      font-size: 11px; letter-spacing: .4px;
+    }
+    footer a { color: var(--cream); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero-inner { gap: 30px; min-height: 560px; }
+      .hero h1 { letter-spacing: -3px; }
+      .about-grid { gap: 40px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-panel { gap: 30px; }
+    }
+    @media (max-width: 680px) {
+      html { scroll-padding-top: 110px; }
+      .nav-wrap { width: min(100% - 32px, 1160px); min-height: 68px; align-items: center; flex-wrap: wrap; gap: 8px; padding: 12px 0; }
+      .nav-links { width: 100%; gap: 3px; overflow-x: auto; padding-bottom: 3px; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { flex: 0 0 auto; padding: 7px 10px; font-size: 11px; }
+      .nav-links .nav-contact { margin-left: 0; }
+      .hero-inner {
+        width: min(100% - 38px, 1160px); min-height: auto; padding: 66px 0 45px;
+        grid-template-columns: 1fr; gap: 22px;
+      }
+      .hero h1 { font-size: clamp(54px, 15vw, 76px); letter-spacing: -3px; }
+      .hero-role { font-size: 13px; }
+      .hero-intro { font-size: 13px; }
+      .hero-art { width: min(78vw, 320px); justify-self: center; margin: 8px auto 0; }
+      .art-caption { right: -4px; bottom: 7%; }
+      .hero-bottom { width: min(100% - 38px, 1160px); font-size: 9px; gap: 12px 18px; }
+      .section { padding: 72px 0; }
+      .container { width: min(100% - 38px, 1060px); }
+      .section-heading { display: block; margin-bottom: 29px; }
+      .section-note { margin-top: 14px; }
+      .about-grid { grid-template-columns: 1fr; gap: 27px; }
+      .about-copy { font-size: 14px; }
+      .about-highlight { font-size: 18px; }
+      .education-card { padding: 22px; }
+      .skill-grid { gap: 10px; }
+      .skill-card { min-height: 170px; padding: 17px 15px; }
+      .project-card { grid-template-columns: 1fr; gap: 14px; padding: 27px 23px; }
+      .project-index { font-size: 36px; }
+      .contact-section { padding: 70px 0 55px; }
+      .contact-panel { grid-template-columns: 1fr; padding: 26px 21px; gap: 28px; }
+      footer { padding: 22px 19px; }
+    }
+    @media (max-width: 390px) {
+      .skill-grid { grid-template-columns: 1fr; }
+      .skill-card { min-height: auto; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#home" aria-label="Kanak Sharma home">
+        <span class="brand-mark">K</span>
+        <span>Kanak Sharma<span>.</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Toolkit</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="nav-contact">Let's connect ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Computer Science Engineering · Indore, India</p>
+          <h1>Kanak<br><em>Sharma.</em></h1>
+          <p class="hero-role">CSE Student &nbsp;·&nbsp; Aspiring AI/ML Engineer &nbsp;·&nbsp; Developer</p>
+          <p class="hero-intro">
+            I enjoy turning ideas into practical digital experiences. I'm strengthening my foundations in programming,
+            web development and AI/ML while learning by building, experimenting and solving real-world problems.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my work <span class="arrow">↗</span></a>
+            <a class="button button-outline" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="KS monogram graphic">
+          <div class="art-ring"></div>
+          <div class="art-ring art-ring-two"></div>
+          <div class="art-disc">KS</div>
+          <div class="art-caption">Learning · Building · Growing</div>
+        </div>
+      </div>
+      <div class="hero-bottom">
+        <span><i></i> Based in Indore, India</span>
+        <span><i></i> B.Tech · Computer Science</span>
+        <span><i></i> Interested in AI & technology</span>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker">A little about me</p>
+            <h2 class="section-title">Learning with curiosity.<br>Growing through building.</h2>
+          </div>
+          <p class="section-note">A snapshot of what I study, what I enjoy exploring, and where I want to go next.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>
+              I'm Kanak Sharma, a Computer Science and Engineering student at Indore Institute of Science and Technology.
+              I like exploring how technology works and using what I learn to create useful, practical applications.
+            </p>
+            <p>
+              My current interests include artificial intelligence, machine learning, web development and problem-solving.
+              I value clear communication, continuous learning and the experience that comes from working on hands-on projects.
+            </p>
+            <div class="about-highlight">
+              My goal is to grow into a skilled software and AI/ML engineer, contribute to meaningful products, and keep learning through real-world challenges.
+            </div>
+          </div>
+
+          <div id="education" class="reveal">
+            <article class="education-card">
+              <span class="card-label">My background</span>
+              <h3>Bachelor of Technology<br>Computer Science & Engineering</h3>
+              <p>Indore Institute of Science and Technology · Indore, Madhya Pradesh</p>
+              <div class="education-meta">
+                <span>Undergraduate</span>
+                <span>Third-year student</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker">What I work with</p>
+            <h2 class="section-title">Skills & toolkit.</h2>
+          </div>
+          <p class="section-note">A growing toolkit, built one concept and one project at a time.</p>
+        </div>
+
+        <div class="skill-grid">
+          <article class="skill-card reveal">
+            <span class="skill-number">01</span>
+            <h3>Programming</h3>
+            <div class="skill-tags"><span>Java</span><span>Python</span><span>C</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-number">02</span>
+            <h3>Web development</h3>
+            <div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-number">03</span>
+            <h3>Database</h3>
+            <div class="skill-tags"><span>SQL</span><span>MySQL</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-number">04</span>
+            <h3>Strengths</h3>
+            <div class="skill-tags"><span>Communication</span><span>Problem Solving</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker">Things I've worked on</p>
+            <h2 class="section-title">Featured project.</h2>
+          </div>
+          <p class="section-note">A project that reflects my interest in using AI and language technologies to solve practical problems.</p>
+        </div>
+
+        <article class="project-card reveal">
+          <div class="project-index">01</div>
+          <div class="project-content">
+            <span class="project-type">AI / NLP · Minor project</span>
+            <h3>HSE Safety Analyzer</h3>
+            <p>
+              An AI/NLP-based safety intelligence project designed to analyze unsafe-act, unsafe-condition and near-miss reports.
+              It explores how these reports can help identify potential Serious Injury & Fatality (SIF) precursors, giving safety
+              teams a clearer way to understand and prioritize risks.
+            </p>
+            <div class="project-tags">
+              <span>Artificial Intelligence</span>
+              <span>Natural Language Processing</span>
+              <span>Safety Analytics</span>
+            </div>
+            <div class="project-foot">Research · Analysis · Practical problem-solving</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <p class="section-kicker">Let's connect</p>
+            <h2>Have an idea or opportunity?</h2>
+            <p class="contact-copy">
+              I'm always open to learning, collaboration, internship opportunities and thoughtful conversations about technology.
+              Feel free to reach out.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:knksharmaa4483@gmail.com">
+              <span><small>Email</small><strong>knksharmaa4483@gmail.com</strong></span><span class="contact-arrow">↗</span>
+            </a>
+            <a class="contact-link" href="tel:+917225881011">
+              <span><small>Phone</small><strong>+91 72258 81011</strong></span><span class="contact-arrow">↗</span>
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/kanak-sharma-aba329351" target="_blank" rel="noopener noreferrer">
+              <span><small>LinkedIn</small><strong>Connect professionally</strong></span><span class="contact-arrow">↗</span>
+            </a>
+            <a class="contact-link" href="https://github.com/kanak2710" target="_blank" rel="noopener noreferrer">
+              <span><small>GitHub</small><strong>Explore my code</strong></span><span class="contact-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Kanak Sharma. Built with curiosity.</span>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+
+  <script>
+    // Subtle section reveal, with a graceful fallback for browsers without IntersectionObserver.
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('visible'));
+    }
+
+    // Keep the current navigation item in sync with the visible section.
+    const sections = document.querySelectorAll('main section[id]');
+    const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
+    if ('IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navItems.forEach((link) => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px' });
+      sections.forEach((section) => sectionObserver.observe(section));
+    }
+  </script>
+</body>
+</html>
